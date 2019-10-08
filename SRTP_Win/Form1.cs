@@ -6,31 +6,52 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace SRTP_Win
 {
     public partial class Log_Win : Form
     {
+        private string username = "root";
+        private string password = "SRTP123456789cc!!";
+        private string serverIP = "120.27.242.199";
+        private string connectStr = "";
+        private string sql = "";
+        public MySqlConnection conn = null;
+        string UserId, PassWd;
+        string DataUserId, DataPaw, DataFowed;
         public Log_Win()
         {
             InitializeComponent();
+            GetDataBaseConnection();
         }
 
         private void Log_Button_Click(object sender, EventArgs e)
         {
-            string UserId,PassWd;
-            UserId= this.UserId_TextBox.Text;
+            UserId = "";
+            PassWd = "";
+            UserId = this.UserId_TextBox.Text;
             PassWd = this.PassWd_TextBox.Text;
-            //if (UserId.Equals("")|| PassWd .Equals(""))
-                //MessageBox.Show("请勿输入空的用户名或者密码","警告!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            sql = "SELECT * FROM USER_TABLE WHERE USER="+UserId+ " and PASSWORD="+PassWd;
+            //MySqlCommand cmd = conn.CreateCommand();
+            //cmd.CommandText = sql;
+            //try
+            //{
+            //    MySqlDataReader reader = cmd.ExecuteReader();
+            //    if (reader.Read())
+            //    {
+            //        this.Hide();
+            //        Main_Win main_Win = new Main_Win(this);
+            //        main_Win.Show();
+            //    }
+            //}
+            //catch(MySqlException ex)
+            //{
+            //    MessageBox.Show("账号密码错误,请重试","登陆失败",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            //}
 
-
-            //此处需要获得来自于服务器的许可
-
-
-            if(true)
+            if (true)
             {
-                //MessageBox.Show("登陆成功！", "成功", MessageBoxButtons.OK, MessageBoxIcon.None);
                 this.Hide();
                 Main_Win main_Win = new Main_Win(this);
                 main_Win.Show();
@@ -45,6 +66,20 @@ namespace SRTP_Win
             this.Hide();
             Register_Win register_Win = new Register_Win(this);
             register_Win.Show();
+        }
+
+        private void GetDataBaseConnection()
+        {
+            connectStr = "server=" + serverIP + ";user=" + username + ";password=" + password + ";database=SRTP";
+            conn = new MySqlConnection(connectStr);
+            try
+            {
+                conn.Open();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -21,7 +21,9 @@ namespace SRTP_Win
         public Main_Win(Log_Win tmp_Father_Win_Son_Main)
         {
             Father_Log_Win = tmp_Father_Win_Son_Main;
+            GetDataBaseConnection();
             InitializeComponent();
+            InitDataGridView1();
         }
 
         private void Main_Win_FormClosed(object sender, FormClosedEventArgs e)
@@ -36,21 +38,59 @@ namespace SRTP_Win
 
         private void GetData_Button_Click(object sender, EventArgs e)
         {
-            connectStr = "server=" + serverIP + ";user=" + username + ";password=" + password + ";database=TEST";
+            sql = "select * from RM_TABLE";
+            MySqlDataAdapter adapter = new MySqlDataAdapter(sql, conn);
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+            this.dataGridView1.DataSource = dataTable;
+            
+
+        }
+
+        private void Raw_Material_Tab_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void GetDataBaseConnection()
+        {
+            connectStr = "server=" + serverIP + ";user=" + username + ";password=" + password + ";database=SRTP";
             conn = new MySqlConnection(connectStr);
             try
             {
                 conn.Open();
             }
-            catch(MySqlException ex)
+            catch (MySqlException ex)
             {
                 MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            sql = "select * from Student";
+        }
+
+
+
+        private void DataGridView1_Enter(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void InitDataGridView1()
+        {
+            sql = "select * from RM_TABLE";
             MySqlDataAdapter adapter = new MySqlDataAdapter(sql, conn);
             DataTable dataTable = new DataTable();
             adapter.Fill(dataTable);
             this.dataGridView1.DataSource = dataTable;
+            this.dataGridView1.Columns[0].HeaderCell.Value = "编号";
+            this.dataGridView1.Columns[1].HeaderCell.Value = "名称";
+            this.dataGridView1.Columns[2].HeaderCell.Value = "数量";
+            this.dataGridView1.Columns[3].HeaderCell.Value = "单位";
+            this.dataGridView1.Columns[4].HeaderCell.Value = "仓储地址";
+            this.dataGridView1.Columns[5].HeaderCell.Value = "每单位进价";
+            this.dataGridView1.Columns[6].HeaderCell.Value = "最低保有量";
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
 
         }
     }
