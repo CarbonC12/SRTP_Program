@@ -66,7 +66,7 @@ namespace SRTP_Win
             if (true)
             {
                 this.Hide();
-                Main_Win main_Win = new Main_Win(this);
+                Main_Win main_Win = new Main_Win();
                 main_Win.Show();
             }
 
@@ -83,7 +83,7 @@ namespace SRTP_Win
 
         private void GetDataBaseConnection()
         {
-            connectStr = "server=" + serverIP + ";user=" + username + ";password=" + password + ";database=SRTP";
+            connectStr = "server=" + serverIP + ";user=" + username + ";password=" + password + ";database=materialinfo;charset=utf8;";
             conn = new MySqlConnection(connectStr);
             try
             {

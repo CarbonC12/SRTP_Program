@@ -15,8 +15,9 @@ namespace SRTP_Win
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Log_Win log_Win = new Log_Win();
-            Application.Run(log_Win);
+            // Log_Win log_Win = new Log_Win();
+            Main_Win mainWin = new Main_Win();
+            Application.Run(mainWin);
         }
     }
 }
