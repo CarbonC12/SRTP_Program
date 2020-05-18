@@ -20,11 +20,24 @@ namespace SRTP_Win
         public MySqlConnection conn = null;
         string UserId, PassWd;
         string DataUserId, DataPaw, DataFowed;
+        AutoResizeForm asc = new AutoResizeForm();
         public Log_Win()
         {
             InitializeComponent();
             GetDataBaseConnection();
         }
+
+        private void Log_Win_Load(object sender, EventArgs e)
+        {
+            asc.controllInitializeSize(this);
+        }
+
+        private void Log_Win_SizeChanged(object sender, EventArgs e)
+        {
+            asc.controlAutoSize(this);
+        }
+
+
 
         private void Log_Button_Click(object sender, EventArgs e)
         {
@@ -79,6 +92,7 @@ namespace SRTP_Win
             catch (MySqlException ex)
             {
                 MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
             }
         }
     }
