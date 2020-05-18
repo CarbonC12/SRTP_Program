@@ -16,6 +16,10 @@
 -- ('006','标准件'),
 -- ('007','耗材');
 
+-- update materialinfo.material_type set material_type_name = '绝缘材料' where material_type_id = '004';
+-- update materialinfo.material_type set material_type_name = '产品配件' where material_type_id = '005';
+-- update materialinfo.material_type set material_type_name = '化工类' where material_type_id = '003';
+
 
 -- create table if not exists fundamental_material(
 --     fm_id char(7) not null primary key,
@@ -23,6 +27,10 @@
 --     fm_name varchar(50) not null unique,
 --     foreign key (fm_type) references material_type(material_type_id)
 -- );
+
+-- alter table materialinfo.fundamental_material 
+-- add column fm_inventory decimal not null default 0 after fm_name,
+-- add column fm_unit varchar(10) after fm_inventory;
 
 -- insert into materialinfo.fundamental_material (fm_id, fm_type, fm_name) values 
 -- ('0010001','001','漆包线(Φ0.18)'),
@@ -59,7 +67,10 @@
 -- ('0070001','007','打磨片(240#)'),
 -- ('0070002','007','砂纸(320#)');
 
-
+-- update materialinfo.fundamental_material 
+-- set fm_unit = '公斤' where fm_type = '001' or fm_type = '003' or fm_type = '004';
+-- update materialinfo.fundamental_material 
+-- set fm_unit = '个' where fm_type = '002' or fm_type = '005' or fm_type = '006' or fm_type = '007';
 
 
 -- create table if not exists intermediate_material(
@@ -211,8 +222,6 @@
 
 -- insert into materialinfo.consumables values ('00000001','10010010',1,1);
 
-use materialinfo;
-
 -- bug: 单价的单位和采购量的单位可能会不同，
 -- 触发器：自动计算total
 -- drop table if exists purchase_table;
@@ -248,12 +257,20 @@ use materialinfo;
 --     foreign key (product_name) references intermediate_material(im_id)
 -- )auto_increment = 1;
 
+-- delimiter $$
+-- create trigger purchase_material 
+-- after update on purchase_table 
+-- for each row 
+-- begin
+--     select amount into @amount from purchase_table
+--         where new.is_completed = 'Y';
+--     if @amount is not null then
+--         update fundamental_material set fm_inventory = fm_inventory + @amount
+--             where fm_id = new.material_name; 
+--     end if;
+-- end;
+-- $$
+-- delimiter ;
 
--- select im_name from materialinfo.intermediate_material where im_parent is null;
+-- update purchase_table set is_completed = 'N';
 
--- update materialinfo.material_type set material_type_name = '绝缘材料' where material_type_id = '004';
--- update materialinfo.material_type set material_type_name = '产品配件' where material_type_id = '005';
--- update materialinfo.material_type set material_type_name = '化工类' where material_type_id = '003';
-
-
-select * from materialinfo.intermediate_material where im_name = {SelectTreeNode} and im_parent is not null;
