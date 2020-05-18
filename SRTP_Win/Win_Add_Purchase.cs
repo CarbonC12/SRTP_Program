@@ -13,14 +13,40 @@ namespace SRTP_Win
     public partial class Win_Add_Purchase : Form
     {
         public MySqlConnection conn = null;
-        private Main_Win MyFatherWin=null;
-        public string Type, MaterialName, Manager, Factory;
-        public int Num, Price, DayCost;
+        private Main_Win MyFatherWin = null;
+        // public string Type, MaterialName, Manager, Factory;
+        // public int Num, Price, DayCost;
+
+
         public Win_Add_Purchase(Main_Win Furtherwin, MySqlConnection FurtherConnection)
         {
             MyFatherWin = Furtherwin;
             conn = FurtherConnection;
             InitializeComponent();
+        }
+
+        // New 使材料内容随着材料类别的改变而改变
+        private void Get_Type_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string Type = Get_Type.Text;
+            string sql = $"select material_type_id " +
+                $"from materialinfo.material_type " +
+                $"where material_type_name = '{Type}';";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            Object reader = cmd.ExecuteScalar();
+            if (reader != null)
+            {
+                sql = $"select fm_name " +
+                    $"from materialinfo.fundamental_material " +
+                    $"where fm_type = '{reader.ToString()}';";
+                MySqlDataAdapter da2 = new MySqlDataAdapter(sql, conn);
+                DataSet ds2 = new DataSet();
+                da2.Fill(ds2, "materialinfo.fundamental_material");
+                DataTable dt2 = ds2.Tables["materialinfo.fundamental_material"];
+                Get_Name.DataSource = dt2;
+                Get_Name.DisplayMember = "fm_name";
+                Get_Name.ValueMember = "fm_name";
+            }
         }
 
         private void Win_Add_Purchase_FormClosing(object sender, FormClosingEventArgs e)
@@ -30,34 +56,36 @@ namespace SRTP_Win
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Type = Get_Type.Text;
-            MaterialName = Get_Name.Text;
-            Manager = Get_Manager.Text;
-            Factory = Get_Factory.Text;
+            // Type = Get_Type.Text;
+            // MaterialName = Get_Name.Text;
+            // Manager = Get_Manager.Text;
+            // Factory = Get_Factory.Text;
             try
             {
-                Num = int.Parse(Get_Num.Text);
-                Price = int.Parse(Get_Price.Text);
-                DayCost = int.Parse(Get_DayCost.Text);
+                // Num = int.Parse(Get_Num.Text);
+                // Price = int.Parse(Get_Price.Text);
+                // DayCost = int.Parse(Get_DayCost.Text);
                 addInfomationtoDataBase();
-                MessageBox.Show("新建成功!");
-                this.Close();
+                // MessageBox.Show("新建成功!");
+                // this.Close();
             }
-            catch(Exception ae)
+            catch (Exception ae)
             {
-                MessageBox.Show(ae.Message, "错误!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show(ae.Message, "错误!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        // New 将材料类别ComboBox与数据库绑定
         private void Win_Add_Purchase_Load(object sender, EventArgs e)
         {
-            // TODO: 这行代码将数据加载到表“sRTPDataSet.RM_TABLE”中。您可以根据需要移动或删除它。
-            this.rM_TABLETableAdapter.Fill(this.sRTPDataSet.RM_TABLE);
-            // TODO: 这行代码将数据加载到表“sRTPDataSet.PD_TABLE”中。您可以根据需要移动或删除它。
-            this.pD_TABLETableAdapter.Fill(this.sRTPDataSet.PD_TABLE);
-            // TODO: 这行代码将数据加载到表“sRTPDataSet.ORD_PD_TABLE”中。您可以根据需要移动或删除它。
-            this.oRD_PD_TABLETableAdapter.Fill(this.sRTPDataSet.ORD_PD_TABLE);
-
+            MySqlDataAdapter da1 = new MySqlDataAdapter(
+                "select material_type_name from materialinfo.material_type;", conn);
+            DataSet ds1 = new DataSet();
+            da1.Fill(ds1, "materialinfo.material_type");
+            DataTable dt1 = ds1.Tables["materialinfo.material_type"];
+            Get_Type.DataSource = dt1;
+            Get_Type.DisplayMember = "material_type_name";
+            Get_Type.ValueMember = "material_type_name";
         }
 
         private void addInfomationtoDataBase()
@@ -98,7 +126,6 @@ namespace SRTP_Win
             if (cmd.ExecuteNonQuery() > 0) MessageBox.Show("Ok!", "插入采购数据", MessageBoxButtons.OK);
             else MessageBox.Show("Failed!", "插入采购数据", MessageBoxButtons.OK);
         }
-    }
 
     }
 }

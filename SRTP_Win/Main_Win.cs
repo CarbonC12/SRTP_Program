@@ -19,9 +19,10 @@ namespace SRTP_Win
         private string sql = null;
         public MySqlConnection conn = null;
         AutoResizeForm asc = new AutoResizeForm();
-        public Main_Win(Log_Win tmp_Father_Win_Son_Main)
+        //public Main_Win(Log_Win tmp_Father_Win_Son_Main)
+        public Main_Win()
         {
-            Father_Log_Win = tmp_Father_Win_Son_Main;
+            // Father_Log_Win = tmp_Father_Win_Son_Main;
             GetDataBaseConnection();
             InitializeComponent();
             InitDataGridView1();
@@ -33,13 +34,13 @@ namespace SRTP_Win
 
         private void Main_Win_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Father_Log_Win.Close();
+            //Father_Log_Win.Close();
         }
 
 
         private void GetDataBaseConnection()
         {
-            connectStr = "server=" + serverIP + ";user=" + username + ";password=" + password + ";database=materialinfo;charset=utf8;";
+            connectStr = "server=" + serverIP + ";user=" + username + ";password=" + password + ";database=materialinfo;Charset=utf8;";
             conn = new MySqlConnection(connectStr);
             try
             {
@@ -76,28 +77,41 @@ namespace SRTP_Win
             string GetSelectText = MaterialTree.SelectedNode.Text;
             if (GetSelectText != "基本材料" && GetSelectText != "半成品" && GetSelectText != "电流线圈")
                 ChangeMaterialDataGrid(GetSelectText);
-            
         }
         private void InitDataGridView1()
         {
-            sql = "select * from RM_TABLE";
-            MySqlDataAdapter adapter = new MySqlDataAdapter(sql, conn);
-            DataTable dataTable = new DataTable();
-            adapter.Fill(dataTable);
-            this.dataGridView1.DataSource = dataTable;
-            this.dataGridView1.Columns[0].HeaderCell.Value = "编号";
-            this.dataGridView1.Columns[1].HeaderCell.Value = "名称";
-            this.dataGridView1.Columns[2].HeaderCell.Value = "数量";
-            this.dataGridView1.Columns[3].HeaderCell.Value = "单位";
-            this.dataGridView1.Columns[4].HeaderCell.Value = "仓储地址";
-            this.dataGridView1.Columns[5].HeaderCell.Value = "每单位进价";
-            this.dataGridView1.Columns[6].HeaderCell.Value = "最低保有量";
+            //sql = "select * from RM_TABLE";
+            //MySqlDataAdapter adapter = new MySqlDataAdapter(sql, conn);
+            //DataTable dataTable = new DataTable();
+            //adapter.Fill(dataTable);
+            //this.dataGridView1.DataSource = dataTable;
+            //this.dataGridView1.Columns[0].HeaderCell.Value = "编号";
+            //this.dataGridView1.Columns[1].HeaderCell.Value = "名称";
+            //this.dataGridView1.Columns[2].HeaderCell.Value = "数量";
+            //this.dataGridView1.Columns[3].HeaderCell.Value = "单位";
+            //this.dataGridView1.Columns[4].HeaderCell.Value = "仓储地址";
+            //this.dataGridView1.Columns[5].HeaderCell.Value = "每单位进价";
+            //this.dataGridView1.Columns[6].HeaderCell.Value = "最低保有量";
         }
         private void ChangeMaterialDataGrid(string SelectTreeNode)
         {
             //GJS
             //SelectTreeNode的值是中文材料类型（比如铜材，化工类）
-            dataGridView1.DataSource = null;
+
+            sql = $"select material_type_id " +
+                $"from materialinfo.material_type " +
+                $"where material_type_name = '{SelectTreeNode}'";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            Object reader = cmd.ExecuteScalar();
+            if (reader != null)
+            {
+                sql = $"select fm_id, fm_name from materialinfo.fundamental_material " +
+                    $"where fm_type = '{reader.ToString()}'";
+                MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dataGridView1.DataSource = dt;
+            }
         }
         //原材料页面操作结束
 
@@ -109,34 +123,57 @@ namespace SRTP_Win
         {
             //GJS
             //在这里初始化订单表格数据
-            OrderDataView.DataSource = null;
+
         }
         private void OrderTree_AfterSelect(object sender, TreeViewEventArgs e)
         {
             string GetSelectText = OrderTree.SelectedNode.Text;
-            if(GetSelectText=="张三"||GetSelectText=="李四")
-                ChangeOrderGridInfo(OrderTree.SelectedNode.Text, Radio_Order_Run.Checked, Radio_Order_Finish.Checked);
+            if (GetSelectText == "张三" || GetSelectText == "李四")
+            {
+                ChangeOrderGridInfo(OrderTree.SelectedNode.Text, Completed.Checked, NotCompleted.Checked);
+            }
+
         }
 
-        private void Radio_Order_Finish_CheckedChanged(object sender, EventArgs e)
+        private void Completed_CheckedChanged(object sender, EventArgs e)
         {
-            ChangeOrderGridInfo(OrderTree.SelectedNode.Text, Radio_Order_Run.Checked, Radio_Order_Finish.Checked);
+            ChangeOrderGridInfo(OrderTree.SelectedNode.Text, Completed.Checked, NotCompleted.Checked);
         }
 
-        private void  ChangeOrderGridInfo(string TreeSelectNode,bool IsRunOrder,bool IsFinishOrder)
+        private void NotCompleted_CheckedChanged(object sender, EventArgs e)
+        {
+            ChangeOrderGridInfo(OrderTree.SelectedNode.Text, Completed.Checked, NotCompleted.Checked);
+        }
+
+        private void ChangeOrderGridInfo(string TreeSelectNode, bool Completed, bool NotCompleted)
         {
             //GJS
             //在这里更改订单表格数据
             //订单表的格式详见随压缩包附带的EXCEL
             //需要判断Radio_Order_Run.Checked（正在进行的订单）和Radio_Order_Finish.Checked（已经完成的订单）谁为ture谁为false来进行数据库查询
             //同时需要判断树的当前选择节点GetSelectText值为张三/李四
-            OrderDataView.DataSource = null;
+            StringBuilder sqlBuilder = new StringBuilder();
+            sql = $"select * from materialinfo.order_table where salesperson = '{TreeSelectNode}'";
+            sqlBuilder.Append(sql);
+            if (Completed && !NotCompleted)
+            {
+                sqlBuilder.Append(" and is_completed = 'Y'");
+            }
+            if (NotCompleted && !Completed)
+            {
+                sqlBuilder.Append("and is_completed = 'N'");
+            }
+            sqlBuilder.Append(";");
+            MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            dataGridView1.DataSource = dt;
         }
 
         private void Button_Add_Order_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Win_Add_Order win_Add_Order = new Win_Add_Order(this,conn);
+            Win_Add_Order win_Add_Order = new Win_Add_Order(this, conn);
             win_Add_Order.Show();
         }
         //订单页面操作结束————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -147,7 +184,7 @@ namespace SRTP_Win
         private void Button_Add_Purchase_Order_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Win_Add_Purchase win_Add_Purchase = new Win_Add_Purchase(this,conn);
+            Win_Add_Purchase win_Add_Purchase = new Win_Add_Purchase(this, conn);
             win_Add_Purchase.Show();
         }
 
@@ -156,7 +193,10 @@ namespace SRTP_Win
             //GJS
             //在这里初始化采购单表格数据
             Grid_Purchase_Order.DataSource = null;
-        }        
+
+
+
+        }
         private void Tree_Purchase_Order_AfterSelect(object sender, TreeViewEventArgs e)
         {
             string CurrSelectNodeText = Tree_Purchase_Order.SelectedNode.Text;
@@ -170,10 +210,15 @@ namespace SRTP_Win
             Grid_Purchase_Order.DataSource = null;
         }
 
+        private void btnSearchfactory(object sender, EventArgs e)
+        {
+
+        }
+
 
         //对采购单界面操作结束————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-    
-    
+
+
     }
 
     class AutoResizeForm
