@@ -65,7 +65,40 @@ namespace SRTP_Win
             //GJS
             //此处代码应该对采购单管理数据库进行写入一个采购单数据
             //具体采购单数据表的格式参考随压缩包附带的Excel文档
+            string Material_Type_ID = null;
+            string Material_ID = null;
+            string Material_Name = Get_Name.Text;
+            string Material_Amount = Get_Num.Text;
+            string Material_Price = Get_Price.Text;
+            string Total = (Convert.ToDouble(Material_Price) * Convert.ToDouble(Material_Amount)).ToString();
+            string Day_Cost = Get_DayCost.Text;
+            string Manager = Get_Manager.Text;
+            string Factory = Get_Factory.Text;
+
+            string sql = $"select fm_type,fm_id " +
+                $"from fundamental_material " +
+                $"where fm_name = '{Material_Name}';";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Material_Type_ID = reader[0].ToString();
+                Material_ID = reader[1].ToString();
+            }
+            reader.Close();
+            DateTime Now = DateTime.Now;
+            string Order_Time = Now.ToString("yyyyMMdd");
+            string Dead_Line = Now.AddDays(Convert.ToInt32(Day_Cost)).ToString("yyyyMMdd");
+            sql = $"insert into materialinfo.purchase_table " +
+                $"(material_type, material_name, amount, price, total, " +
+                $"order_time, dead_line, factory, person_in_charge) values " +
+                $"('{Material_Type_ID}','{Material_ID}',{Material_Amount}," +
+                $"{Material_Price},{Total},{Order_Time},{Dead_Line}, '{Factory}', '{Manager}');";
+            cmd = new MySqlCommand(sql, conn);
+            if (cmd.ExecuteNonQuery() > 0) MessageBox.Show("Ok!", "插入采购数据", MessageBoxButtons.OK);
+            else MessageBox.Show("Failed!", "插入采购数据", MessageBoxButtons.OK);
         }
+    }
 
     }
 }

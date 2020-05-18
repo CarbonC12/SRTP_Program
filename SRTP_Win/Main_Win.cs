@@ -15,8 +15,8 @@ namespace SRTP_Win
         private string username = "root";
         private string password = "SRTP123456789cc!!";
         private string serverIP = "120.27.242.199";
-        private string connectStr = "";
-        private string sql = "";
+        private string connectStr = null;
+        private string sql = null;
         public MySqlConnection conn = null;
         AutoResizeForm asc = new AutoResizeForm();
         public Main_Win(Log_Win tmp_Father_Win_Son_Main)
@@ -39,7 +39,7 @@ namespace SRTP_Win
 
         private void GetDataBaseConnection()
         {
-            connectStr = "server=" + serverIP + ";user=" + username + ";password=" + password + ";database=SRTP";
+            connectStr = "server=" + serverIP + ";user=" + username + ";password=" + password + ";database=materialinfo;charset=utf8;";
             conn = new MySqlConnection(connectStr);
             try
             {
