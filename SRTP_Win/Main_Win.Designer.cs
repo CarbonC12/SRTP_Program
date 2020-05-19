@@ -113,15 +113,6 @@
             this.Tab_D = new System.Windows.Forms.TabPage();
             this.Tab_Produce_Control = new System.Windows.Forms.TabControl();
             this.TabPage_Produce_Control = new System.Windows.Forms.TabPage();
-            this.BTN_Produce = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.Text_ProductName = new System.Windows.Forms.ComboBox();
-            this.Text_ProductDay = new System.Windows.Forms.TextBox();
-            this.Text_ProductNum = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.Product_Storage_Data = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
@@ -130,6 +121,7 @@
             this.TabPage_Predict = new System.Windows.Forms.TabPage();
             this.Grid_Predict = new System.Windows.Forms.DataGridView();
             this.Label_Predict = new System.Windows.Forms.Label();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.Original_Tab.SuspendLayout();
             this.Tab_A.SuspendLayout();
             this.Tab_A_Store.SuspendLayout();
@@ -148,6 +140,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Product_Order_Need_Data)).BeginInit();
             this.TabPage_Predict.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid_Predict)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // Original_Tab
@@ -546,15 +539,7 @@
             // 
             // TabPage_Produce_Control
             // 
-            this.TabPage_Produce_Control.Controls.Add(this.BTN_Produce);
-            this.TabPage_Produce_Control.Controls.Add(this.label8);
-            this.TabPage_Produce_Control.Controls.Add(this.label7);
-            this.TabPage_Produce_Control.Controls.Add(this.Text_ProductName);
-            this.TabPage_Produce_Control.Controls.Add(this.Text_ProductDay);
-            this.TabPage_Produce_Control.Controls.Add(this.Text_ProductNum);
-            this.TabPage_Produce_Control.Controls.Add(this.label6);
-            this.TabPage_Produce_Control.Controls.Add(this.label5);
-            this.TabPage_Produce_Control.Controls.Add(this.label4);
+            this.TabPage_Produce_Control.Controls.Add(this.dataGridView2);
             this.TabPage_Produce_Control.Controls.Add(this.label3);
             this.TabPage_Produce_Control.Controls.Add(this.Product_Storage_Data);
             this.TabPage_Produce_Control.Controls.Add(this.label2);
@@ -568,86 +553,6 @@
             this.TabPage_Produce_Control.Text = "产品生产管理";
             this.TabPage_Produce_Control.UseVisualStyleBackColor = true;
             // 
-            // BTN_Produce
-            // 
-            this.BTN_Produce.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(214)))), ((int)(((byte)(51)))));
-            this.BTN_Produce.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.BTN_Produce.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BTN_Produce.Location = new System.Drawing.Point(972, 527);
-            this.BTN_Produce.Name = "BTN_Produce";
-            this.BTN_Produce.Size = new System.Drawing.Size(216, 72);
-            this.BTN_Produce.TabIndex = 13;
-            this.BTN_Produce.Text = "确认";
-            this.BTN_Produce.UseVisualStyleBackColor = false;
-            this.BTN_Produce.Click += new System.EventHandler(this.BTN_Produce_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(1159, 404);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(47, 39);
-            this.label8.TabIndex = 12;
-            this.label8.Text = "天";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1122, 276);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(47, 39);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "台";
-            // 
-            // Text_ProductName
-            // 
-            this.Text_ProductName.FormattingEnabled = true;
-            this.Text_ProductName.Location = new System.Drawing.Point(972, 164);
-            this.Text_ProductName.Name = "Text_ProductName";
-            this.Text_ProductName.Size = new System.Drawing.Size(279, 47);
-            this.Text_ProductName.TabIndex = 10;
-            // 
-            // Text_ProductDay
-            // 
-            this.Text_ProductDay.Location = new System.Drawing.Point(1023, 401);
-            this.Text_ProductDay.Name = "Text_ProductDay";
-            this.Text_ProductDay.Size = new System.Drawing.Size(130, 47);
-            this.Text_ProductDay.TabIndex = 9;
-            // 
-            // Text_ProductNum
-            // 
-            this.Text_ProductNum.Location = new System.Drawing.Point(972, 276);
-            this.Text_ProductNum.Name = "Text_ProductNum";
-            this.Text_ProductNum.Size = new System.Drawing.Size(144, 47);
-            this.Text_ProductNum.TabIndex = 8;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(817, 401);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(227, 39);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "需求生产周期：";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(817, 276);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(167, 39);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "产品个数：";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(817, 164);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(167, 39);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "产品名称：";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -656,7 +561,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(183, 52);
             this.label3.TabIndex = 4;
-            this.label3.Text = "生产管理";
+            this.label3.Text = "生产建议";
             // 
             // Product_Storage_Data
             // 
@@ -725,7 +630,7 @@
             this.Grid_Predict.Name = "Grid_Predict";
             this.Grid_Predict.RowHeadersWidth = 102;
             this.Grid_Predict.RowTemplate.Height = 44;
-            this.Grid_Predict.Size = new System.Drawing.Size(1200, 586);
+            this.Grid_Predict.Size = new System.Drawing.Size(1200, 610);
             this.Grid_Predict.TabIndex = 2;
             // 
             // Label_Predict
@@ -737,6 +642,17 @@
             this.Label_Predict.Size = new System.Drawing.Size(273, 78);
             this.Label_Predict.TabIndex = 0;
             this.Label_Predict.Text = "生产预测";
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(769, 112);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowHeadersWidth = 102;
+            this.dataGridView2.RowTemplate.Height = 44;
+            this.dataGridView2.Size = new System.Drawing.Size(592, 540);
+            this.dataGridView2.TabIndex = 5;
             // 
             // Main_Win
             // 
@@ -777,6 +693,7 @@
             this.TabPage_Predict.ResumeLayout(false);
             this.TabPage_Predict.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid_Predict)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -797,7 +714,6 @@
         private System.Windows.Forms.DataGridView Grid_Purchase_Order;
         private System.Windows.Forms.Button Button_Add_Purchase_Order;
         private System.Windows.Forms.TabControl Tab_Produce_Control;
-        private System.Windows.Forms.TabPage TabPage_Produce_Control;
         private System.Windows.Forms.TabPage TabPage_Predict;
         private System.Windows.Forms.DataGridView Grid_Predict;
         private System.Windows.Forms.Label Label_Predict;
@@ -815,19 +731,12 @@
         private System.Windows.Forms.CheckBox Completed1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button BTN_Produce;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox Text_ProductName;
-        private System.Windows.Forms.TextBox Text_ProductDay;
-        private System.Windows.Forms.TextBox Text_ProductNum;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TabPage TabPage_Produce_Control;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView Product_Storage_Data;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView Product_Order_Need_Data;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView dataGridView2;
     }
 }
