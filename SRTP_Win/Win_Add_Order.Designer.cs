@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.Group_Add_Purchase = new System.Windows.Forms.GroupBox();
+            this.Get_Need_Factory = new System.Windows.Forms.TextBox();
             this.Get_Need_Name = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.Get_Location = new System.Windows.Forms.TextBox();
@@ -47,8 +49,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.BTN_Submit = new System.Windows.Forms.Button();
-            this.Get_Need_Factory = new System.Windows.Forms.TextBox();
+            this.materialinfoDataSet = new SRTP_Win.materialinfoDataSet();
+            this.intermediatematerialBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.intermediate_materialTableAdapter = new SRTP_Win.materialinfoDataSetTableAdapters.intermediate_materialTableAdapter();
             this.Group_Add_Purchase.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.materialinfoDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.intermediatematerialBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -82,21 +88,32 @@
             this.Group_Add_Purchase.Controls.Add(this.label3);
             this.Group_Add_Purchase.Controls.Add(this.label2);
             this.Group_Add_Purchase.Location = new System.Drawing.Point(102, 128);
-            this.Group_Add_Purchase.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Group_Add_Purchase.Margin = new System.Windows.Forms.Padding(4);
             this.Group_Add_Purchase.Name = "Group_Add_Purchase";
-            this.Group_Add_Purchase.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Group_Add_Purchase.Padding = new System.Windows.Forms.Padding(4);
             this.Group_Add_Purchase.Size = new System.Drawing.Size(1345, 589);
             this.Group_Add_Purchase.TabIndex = 3;
             this.Group_Add_Purchase.TabStop = false;
             // 
+            // Get_Need_Factory
+            // 
+            this.Get_Need_Factory.Location = new System.Drawing.Point(242, 90);
+            this.Get_Need_Factory.Margin = new System.Windows.Forms.Padding(4);
+            this.Get_Need_Factory.Name = "Get_Need_Factory";
+            this.Get_Need_Factory.Size = new System.Drawing.Size(387, 47);
+            this.Get_Need_Factory.TabIndex = 17;
+            // 
             // Get_Need_Name
             // 
+            this.Get_Need_Name.DataSource = this.intermediatematerialBindingSource;
+            this.Get_Need_Name.DisplayMember = "im_name";
             this.Get_Need_Name.FormattingEnabled = true;
             this.Get_Need_Name.Location = new System.Drawing.Point(905, 85);
-            this.Get_Need_Name.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Get_Need_Name.Margin = new System.Windows.Forms.Padding(4);
             this.Get_Need_Name.Name = "Get_Need_Name";
             this.Get_Need_Name.Size = new System.Drawing.Size(364, 47);
             this.Get_Need_Name.TabIndex = 16;
+            this.Get_Need_Name.ValueMember = "im_name";
             // 
             // label11
             // 
@@ -111,7 +128,7 @@
             // Get_Location
             // 
             this.Get_Location.Location = new System.Drawing.Point(242, 507);
-            this.Get_Location.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Get_Location.Margin = new System.Windows.Forms.Padding(4);
             this.Get_Location.Name = "Get_Location";
             this.Get_Location.Size = new System.Drawing.Size(885, 47);
             this.Get_Location.TabIndex = 14;
@@ -119,7 +136,7 @@
             // Get_DayCost
             // 
             this.Get_DayCost.Location = new System.Drawing.Point(308, 368);
-            this.Get_DayCost.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Get_DayCost.Margin = new System.Windows.Forms.Padding(4);
             this.Get_DayCost.Name = "Get_DayCost";
             this.Get_DayCost.Size = new System.Drawing.Size(84, 47);
             this.Get_DayCost.TabIndex = 13;
@@ -131,7 +148,7 @@
             "张三",
             "李四"});
             this.Get_Saler.Location = new System.Drawing.Point(876, 368);
-            this.Get_Saler.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Get_Saler.Margin = new System.Windows.Forms.Padding(4);
             this.Get_Saler.Name = "Get_Saler";
             this.Get_Saler.Size = new System.Drawing.Size(251, 47);
             this.Get_Saler.TabIndex = 12;
@@ -140,7 +157,7 @@
             // Get_Price
             // 
             this.Get_Price.Location = new System.Drawing.Point(905, 229);
-            this.Get_Price.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Get_Price.Margin = new System.Windows.Forms.Padding(4);
             this.Get_Price.Name = "Get_Price";
             this.Get_Price.Size = new System.Drawing.Size(222, 47);
             this.Get_Price.TabIndex = 11;
@@ -168,7 +185,7 @@
             // Get_Num
             // 
             this.Get_Num.Location = new System.Drawing.Point(242, 229);
-            this.Get_Num.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Get_Num.Margin = new System.Windows.Forms.Padding(4);
             this.Get_Num.Name = "Get_Num";
             this.Get_Num.Size = new System.Drawing.Size(150, 47);
             this.Get_Num.TabIndex = 7;
@@ -249,7 +266,7 @@
             this.BTN_Submit.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.BTN_Submit.ForeColor = System.Drawing.Color.White;
             this.BTN_Submit.Location = new System.Drawing.Point(614, 743);
-            this.BTN_Submit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BTN_Submit.Margin = new System.Windows.Forms.Padding(4);
             this.BTN_Submit.Name = "BTN_Submit";
             this.BTN_Submit.Size = new System.Drawing.Size(332, 92);
             this.BTN_Submit.TabIndex = 17;
@@ -257,13 +274,19 @@
             this.BTN_Submit.UseVisualStyleBackColor = false;
             this.BTN_Submit.Click += new System.EventHandler(this.BTN_Submit_Click);
             // 
-            // Get_Need_Factory
+            // materialinfoDataSet
             // 
-            this.Get_Need_Factory.Location = new System.Drawing.Point(242, 90);
-            this.Get_Need_Factory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Get_Need_Factory.Name = "Get_Need_Factory";
-            this.Get_Need_Factory.Size = new System.Drawing.Size(387, 47);
-            this.Get_Need_Factory.TabIndex = 17;
+            this.materialinfoDataSet.DataSetName = "materialinfoDataSet";
+            this.materialinfoDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // intermediatematerialBindingSource
+            // 
+            this.intermediatematerialBindingSource.DataMember = "intermediate_material";
+            this.intermediatematerialBindingSource.DataSource = this.materialinfoDataSet;
+            // 
+            // intermediate_materialTableAdapter
+            // 
+            this.intermediate_materialTableAdapter.ClearBeforeFill = true;
             // 
             // Win_Add_Order
             // 
@@ -274,13 +297,16 @@
             this.Controls.Add(this.Group_Add_Purchase);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Win_Add_Order";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "增加新订单";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Win_Add_Order_FormClosing);
+            this.Load += new System.EventHandler(this.Win_Add_Order_Load_1);
             this.Group_Add_Purchase.ResumeLayout(false);
             this.Group_Add_Purchase.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.materialinfoDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.intermediatematerialBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -308,5 +334,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button BTN_Submit;
         private System.Windows.Forms.TextBox Get_Need_Factory;
+        private materialinfoDataSet materialinfoDataSet;
+        private System.Windows.Forms.BindingSource intermediatematerialBindingSource;
+        private materialinfoDataSetTableAdapters.intermediate_materialTableAdapter intermediate_materialTableAdapter;
     }
 }

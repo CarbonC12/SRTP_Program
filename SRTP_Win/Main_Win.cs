@@ -230,9 +230,34 @@ namespace SRTP_Win
                 Grid_Purchase_Order.DataSource = dt;
             }
         }
+
+        private void Grid_Purchase_Order_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
         //对采购单界面操作结束————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-
+        //生产管理页面——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+        public string Product_Name="";//需要生产的产品名称
+        public int Product_Num=0, Product_Day=0;//需要生产的产品数量以及天数
+        //天数的作用是规范，比如A产品最少需要3D生产，那么这个数字设置为2就会报错
+        private void BTN_Produce_Click(object sender, EventArgs e)
+        {
+            Product_Name = Text_ProductName.Text;
+            try
+            { 
+                Product_Num = int.Parse(Text_ProductNum.Text);
+                Product_Day = int.Parse(Text_ProductDay.Text);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "错误!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            MessageBox.Show("Name:" + Product_Name + "  Num:" + Product_Num + "  Day:" + Product_Day);
+            //在这里面进行生产管理更新
+            //需要更新原材料数据库以及成品库存
+        }
+        //生产管理页面结束——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
     }
     class AutoResizeForm
     {

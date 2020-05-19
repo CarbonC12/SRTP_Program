@@ -113,6 +113,20 @@
             this.Tab_D = new System.Windows.Forms.TabPage();
             this.Tab_Produce_Control = new System.Windows.Forms.TabControl();
             this.TabPage_Produce_Control = new System.Windows.Forms.TabPage();
+            this.BTN_Produce = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.Text_ProductName = new System.Windows.Forms.ComboBox();
+            this.Text_ProductDay = new System.Windows.Forms.TextBox();
+            this.Text_ProductNum = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.Product_Storage_Data = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Product_Order_Need_Data = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
             this.TabPage_Predict = new System.Windows.Forms.TabPage();
             this.Grid_Predict = new System.Windows.Forms.DataGridView();
             this.Label_Predict = new System.Windows.Forms.Label();
@@ -129,6 +143,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.Grid_Purchase_Order)).BeginInit();
             this.Tab_D.SuspendLayout();
             this.Tab_Produce_Control.SuspendLayout();
+            this.TabPage_Produce_Control.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Product_Storage_Data)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Product_Order_Need_Data)).BeginInit();
             this.TabPage_Predict.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid_Predict)).BeginInit();
             this.SuspendLayout();
@@ -144,17 +161,17 @@
             this.Original_Tab.Margin = new System.Windows.Forms.Padding(4);
             this.Original_Tab.Name = "Original_Tab";
             this.Original_Tab.SelectedIndex = 0;
-            this.Original_Tab.Size = new System.Drawing.Size(1232, 654);
+            this.Original_Tab.Size = new System.Drawing.Size(1420, 809);
             this.Original_Tab.TabIndex = 0;
             // 
             // Tab_A
             // 
             this.Tab_A.Controls.Add(this.Tab_A_Store);
-            this.Tab_A.Location = new System.Drawing.Point(4, 29);
+            this.Tab_A.Location = new System.Drawing.Point(10, 56);
             this.Tab_A.Margin = new System.Windows.Forms.Padding(4);
             this.Tab_A.Name = "Tab_A";
             this.Tab_A.Padding = new System.Windows.Forms.Padding(4);
-            this.Tab_A.Size = new System.Drawing.Size(1224, 621);
+            this.Tab_A.Size = new System.Drawing.Size(1400, 743);
             this.Tab_A.TabIndex = 0;
             this.Tab_A.Text = "仓储管理";
             this.Tab_A.UseVisualStyleBackColor = true;
@@ -167,18 +184,18 @@
             this.Tab_A_Store.Margin = new System.Windows.Forms.Padding(4);
             this.Tab_A_Store.Name = "Tab_A_Store";
             this.Tab_A_Store.SelectedIndex = 0;
-            this.Tab_A_Store.Size = new System.Drawing.Size(1216, 613);
+            this.Tab_A_Store.Size = new System.Drawing.Size(1392, 735);
             this.Tab_A_Store.TabIndex = 0;
             // 
             // Raw_Material_Tab
             // 
             this.Raw_Material_Tab.Controls.Add(this.MaterialTree);
             this.Raw_Material_Tab.Controls.Add(this.dataGridView1);
-            this.Raw_Material_Tab.Location = new System.Drawing.Point(4, 29);
+            this.Raw_Material_Tab.Location = new System.Drawing.Point(10, 56);
             this.Raw_Material_Tab.Margin = new System.Windows.Forms.Padding(4);
             this.Raw_Material_Tab.Name = "Raw_Material_Tab";
             this.Raw_Material_Tab.Padding = new System.Windows.Forms.Padding(4);
-            this.Raw_Material_Tab.Size = new System.Drawing.Size(1208, 580);
+            this.Raw_Material_Tab.Size = new System.Drawing.Size(1372, 669);
             this.Raw_Material_Tab.TabIndex = 0;
             this.Raw_Material_Tab.Text = "总仓储管理";
             this.Raw_Material_Tab.UseVisualStyleBackColor = true;
@@ -254,11 +271,11 @@
             this.Tab_B.Controls.Add(this.Lable_Order_Manage);
             this.Tab_B.Controls.Add(this.OrderDataView);
             this.Tab_B.Controls.Add(this.OrderTree);
-            this.Tab_B.Location = new System.Drawing.Point(4, 29);
+            this.Tab_B.Location = new System.Drawing.Point(10, 56);
             this.Tab_B.Margin = new System.Windows.Forms.Padding(4);
             this.Tab_B.Name = "Tab_B";
             this.Tab_B.Padding = new System.Windows.Forms.Padding(4);
-            this.Tab_B.Size = new System.Drawing.Size(1224, 621);
+            this.Tab_B.Size = new System.Drawing.Size(1400, 743);
             this.Tab_B.TabIndex = 1;
             this.Tab_B.Text = "订单管理";
             this.Tab_B.UseVisualStyleBackColor = true;
@@ -273,7 +290,7 @@
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Location = new System.Drawing.Point(216, 84);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(940, 44);
+            this.panel1.Size = new System.Drawing.Size(1102, 104);
             this.panel1.TabIndex = 6;
             // 
             // NotCompleted
@@ -281,10 +298,10 @@
             this.NotCompleted.AutoSize = true;
             this.NotCompleted.Checked = true;
             this.NotCompleted.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.NotCompleted.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.NotCompleted.Location = new System.Drawing.Point(473, 6);
+            this.NotCompleted.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.NotCompleted.Location = new System.Drawing.Point(648, 26);
             this.NotCompleted.Name = "NotCompleted";
-            this.NotCompleted.Size = new System.Drawing.Size(94, 31);
+            this.NotCompleted.Size = new System.Drawing.Size(181, 56);
             this.NotCompleted.TabIndex = 3;
             this.NotCompleted.Text = "未完成";
             this.NotCompleted.UseVisualStyleBackColor = true;
@@ -292,10 +309,10 @@
             // 
             // Button_Add_Order
             // 
-            this.Button_Add_Order.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Button_Add_Order.Location = new System.Drawing.Point(748, 3);
+            this.Button_Add_Order.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Button_Add_Order.Location = new System.Drawing.Point(853, 23);
             this.Button_Add_Order.Name = "Button_Add_Order";
-            this.Button_Add_Order.Size = new System.Drawing.Size(189, 34);
+            this.Button_Add_Order.Size = new System.Drawing.Size(233, 59);
             this.Button_Add_Order.TabIndex = 5;
             this.Button_Add_Order.Text = "增加新订单";
             this.Button_Add_Order.UseVisualStyleBackColor = true;
@@ -306,10 +323,10 @@
             this.Completed.AutoSize = true;
             this.Completed.Checked = true;
             this.Completed.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.Completed.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Completed.Location = new System.Drawing.Point(373, 6);
+            this.Completed.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Completed.Location = new System.Drawing.Point(440, 26);
             this.Completed.Name = "Completed";
-            this.Completed.Size = new System.Drawing.Size(94, 31);
+            this.Completed.Size = new System.Drawing.Size(181, 56);
             this.Completed.TabIndex = 2;
             this.Completed.Text = "已完成";
             this.Completed.UseVisualStyleBackColor = true;
@@ -317,29 +334,29 @@
             // 
             // BtnSearchFactory
             // 
-            this.BtnSearchFactory.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.BtnSearchFactory.Location = new System.Drawing.Point(205, 7);
+            this.BtnSearchFactory.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnSearchFactory.Location = new System.Drawing.Point(294, 34);
             this.BtnSearchFactory.Name = "BtnSearchFactory";
-            this.BtnSearchFactory.Size = new System.Drawing.Size(113, 34);
+            this.BtnSearchFactory.Size = new System.Drawing.Size(113, 43);
             this.BtnSearchFactory.TabIndex = 1;
             this.BtnSearchFactory.Text = "搜索厂家";
             this.BtnSearchFactory.UseVisualStyleBackColor = true;
             // 
             // textBox1
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox1.Location = new System.Drawing.Point(0, 7);
+            this.textBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox1.Location = new System.Drawing.Point(27, 22);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(199, 34);
+            this.textBox1.Size = new System.Drawing.Size(261, 60);
             this.textBox1.TabIndex = 0;
             // 
             // Lable_Order_Manage
             // 
             this.Lable_Order_Manage.AutoSize = true;
-            this.Lable_Order_Manage.Font = new System.Drawing.Font("Microsoft YaHei", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Lable_Order_Manage.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Lable_Order_Manage.Location = new System.Drawing.Point(209, 22);
             this.Lable_Order_Manage.Name = "Lable_Order_Manage";
-            this.Lable_Order_Manage.Size = new System.Drawing.Size(137, 39);
+            this.Lable_Order_Manage.Size = new System.Drawing.Size(273, 78);
             this.Lable_Order_Manage.TabIndex = 2;
             this.Lable_Order_Manage.Text = "订单管理";
             // 
@@ -349,11 +366,11 @@
             this.OrderDataView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             this.OrderDataView.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.OrderDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.OrderDataView.Location = new System.Drawing.Point(216, 131);
+            this.OrderDataView.Location = new System.Drawing.Point(216, 194);
             this.OrderDataView.Name = "OrderDataView";
             this.OrderDataView.RowHeadersWidth = 102;
             this.OrderDataView.RowTemplate.Height = 44;
-            this.OrderDataView.Size = new System.Drawing.Size(940, 461);
+            this.OrderDataView.Size = new System.Drawing.Size(1102, 510);
             this.OrderDataView.TabIndex = 1;
             // 
             // OrderTree
@@ -368,7 +385,7 @@
             treeNode22.Text = "销售人员";
             this.OrderTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode22});
-            this.OrderTree.Size = new System.Drawing.Size(166, 508);
+            this.OrderTree.Size = new System.Drawing.Size(166, 620);
             this.OrderTree.TabIndex = 0;
             this.OrderTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.OrderTree_AfterSelect);
             // 
@@ -378,10 +395,10 @@
             this.Tab_C.Controls.Add(this.Grid_Purchase_Order);
             this.Tab_C.Controls.Add(this.Tree_Purchase_Order);
             this.Tab_C.Controls.Add(this.LabelPurchaseOrder);
-            this.Tab_C.Location = new System.Drawing.Point(4, 29);
+            this.Tab_C.Location = new System.Drawing.Point(10, 56);
             this.Tab_C.Name = "Tab_C";
             this.Tab_C.Padding = new System.Windows.Forms.Padding(3);
-            this.Tab_C.Size = new System.Drawing.Size(1224, 621);
+            this.Tab_C.Size = new System.Drawing.Size(1400, 743);
             this.Tab_C.TabIndex = 2;
             this.Tab_C.Text = "采购单管理";
             this.Tab_C.UseVisualStyleBackColor = true;
@@ -397,7 +414,7 @@
             this.panel2.Controls.Add(this.textBox2);
             this.panel2.Location = new System.Drawing.Point(203, 139);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1006, 44);
+            this.panel2.Size = new System.Drawing.Size(1006, 70);
             this.panel2.TabIndex = 7;
             // 
             // NotCompleted1
@@ -405,10 +422,10 @@
             this.NotCompleted1.AutoSize = true;
             this.NotCompleted1.Checked = true;
             this.NotCompleted1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.NotCompleted1.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.NotCompleted1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.NotCompleted1.Location = new System.Drawing.Point(437, 9);
             this.NotCompleted1.Name = "NotCompleted1";
-            this.NotCompleted1.Size = new System.Drawing.Size(94, 31);
+            this.NotCompleted1.Size = new System.Drawing.Size(181, 56);
             this.NotCompleted1.TabIndex = 3;
             this.NotCompleted1.Text = "未完成";
             this.NotCompleted1.UseVisualStyleBackColor = true;
@@ -416,7 +433,7 @@
             // 
             // Button_Add_Purchase_Order
             // 
-            this.Button_Add_Purchase_Order.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Button_Add_Purchase_Order.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Button_Add_Purchase_Order.Location = new System.Drawing.Point(807, 4);
             this.Button_Add_Purchase_Order.Name = "Button_Add_Purchase_Order";
             this.Button_Add_Purchase_Order.Size = new System.Drawing.Size(196, 37);
@@ -430,10 +447,10 @@
             this.Completed1.AutoSize = true;
             this.Completed1.Checked = true;
             this.Completed1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.Completed1.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Completed1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Completed1.Location = new System.Drawing.Point(347, 9);
             this.Completed1.Name = "Completed1";
-            this.Completed1.Size = new System.Drawing.Size(94, 31);
+            this.Completed1.Size = new System.Drawing.Size(181, 56);
             this.Completed1.TabIndex = 2;
             this.Completed1.Text = "已完成";
             this.Completed1.UseVisualStyleBackColor = true;
@@ -441,7 +458,7 @@
             // 
             // button2
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button2.Location = new System.Drawing.Point(205, 5);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(115, 36);
@@ -451,10 +468,10 @@
             // 
             // textBox2
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBox2.Location = new System.Drawing.Point(0, 7);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(199, 34);
+            this.textBox2.Size = new System.Drawing.Size(199, 60);
             this.textBox2.TabIndex = 0;
             // 
             // Grid_Purchase_Order
@@ -467,6 +484,7 @@
             this.Grid_Purchase_Order.RowTemplate.Height = 44;
             this.Grid_Purchase_Order.Size = new System.Drawing.Size(1003, 399);
             this.Grid_Purchase_Order.TabIndex = 4;
+            this.Grid_Purchase_Order.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_Purchase_Order_CellValueChanged);
             // 
             // Tree_Purchase_Order
             // 
@@ -497,20 +515,20 @@
             // LabelPurchaseOrder
             // 
             this.LabelPurchaseOrder.AutoSize = true;
-            this.LabelPurchaseOrder.Font = new System.Drawing.Font("Microsoft YaHei", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LabelPurchaseOrder.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.LabelPurchaseOrder.Location = new System.Drawing.Point(196, 72);
             this.LabelPurchaseOrder.Name = "LabelPurchaseOrder";
-            this.LabelPurchaseOrder.Size = new System.Drawing.Size(167, 39);
+            this.LabelPurchaseOrder.Size = new System.Drawing.Size(333, 78);
             this.LabelPurchaseOrder.TabIndex = 0;
             this.LabelPurchaseOrder.Text = "采购单管理";
             // 
             // Tab_D
             // 
             this.Tab_D.Controls.Add(this.Tab_Produce_Control);
-            this.Tab_D.Location = new System.Drawing.Point(4, 29);
+            this.Tab_D.Location = new System.Drawing.Point(10, 56);
             this.Tab_D.Name = "Tab_D";
             this.Tab_D.Padding = new System.Windows.Forms.Padding(3);
-            this.Tab_D.Size = new System.Drawing.Size(1224, 621);
+            this.Tab_D.Size = new System.Drawing.Size(1400, 743);
             this.Tab_D.TabIndex = 3;
             this.Tab_D.Text = "生产管理";
             this.Tab_D.UseVisualStyleBackColor = true;
@@ -523,27 +541,173 @@
             this.Tab_Produce_Control.Location = new System.Drawing.Point(3, 3);
             this.Tab_Produce_Control.Name = "Tab_Produce_Control";
             this.Tab_Produce_Control.SelectedIndex = 0;
-            this.Tab_Produce_Control.Size = new System.Drawing.Size(1218, 615);
+            this.Tab_Produce_Control.Size = new System.Drawing.Size(1394, 737);
             this.Tab_Produce_Control.TabIndex = 0;
             // 
             // TabPage_Produce_Control
             // 
-            this.TabPage_Produce_Control.Location = new System.Drawing.Point(4, 29);
+            this.TabPage_Produce_Control.Controls.Add(this.BTN_Produce);
+            this.TabPage_Produce_Control.Controls.Add(this.label8);
+            this.TabPage_Produce_Control.Controls.Add(this.label7);
+            this.TabPage_Produce_Control.Controls.Add(this.Text_ProductName);
+            this.TabPage_Produce_Control.Controls.Add(this.Text_ProductDay);
+            this.TabPage_Produce_Control.Controls.Add(this.Text_ProductNum);
+            this.TabPage_Produce_Control.Controls.Add(this.label6);
+            this.TabPage_Produce_Control.Controls.Add(this.label5);
+            this.TabPage_Produce_Control.Controls.Add(this.label4);
+            this.TabPage_Produce_Control.Controls.Add(this.label3);
+            this.TabPage_Produce_Control.Controls.Add(this.Product_Storage_Data);
+            this.TabPage_Produce_Control.Controls.Add(this.label2);
+            this.TabPage_Produce_Control.Controls.Add(this.Product_Order_Need_Data);
+            this.TabPage_Produce_Control.Controls.Add(this.label1);
+            this.TabPage_Produce_Control.Location = new System.Drawing.Point(10, 56);
             this.TabPage_Produce_Control.Name = "TabPage_Produce_Control";
             this.TabPage_Produce_Control.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPage_Produce_Control.Size = new System.Drawing.Size(1210, 582);
+            this.TabPage_Produce_Control.Size = new System.Drawing.Size(1374, 671);
             this.TabPage_Produce_Control.TabIndex = 0;
             this.TabPage_Produce_Control.Text = "产品生产管理";
             this.TabPage_Produce_Control.UseVisualStyleBackColor = true;
+            // 
+            // BTN_Produce
+            // 
+            this.BTN_Produce.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(214)))), ((int)(((byte)(51)))));
+            this.BTN_Produce.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BTN_Produce.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BTN_Produce.Location = new System.Drawing.Point(972, 527);
+            this.BTN_Produce.Name = "BTN_Produce";
+            this.BTN_Produce.Size = new System.Drawing.Size(216, 72);
+            this.BTN_Produce.TabIndex = 13;
+            this.BTN_Produce.Text = "确认";
+            this.BTN_Produce.UseVisualStyleBackColor = false;
+            this.BTN_Produce.Click += new System.EventHandler(this.BTN_Produce_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(1159, 404);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(47, 39);
+            this.label8.TabIndex = 12;
+            this.label8.Text = "天";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(1122, 276);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(47, 39);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "台";
+            // 
+            // Text_ProductName
+            // 
+            this.Text_ProductName.FormattingEnabled = true;
+            this.Text_ProductName.Location = new System.Drawing.Point(972, 164);
+            this.Text_ProductName.Name = "Text_ProductName";
+            this.Text_ProductName.Size = new System.Drawing.Size(279, 47);
+            this.Text_ProductName.TabIndex = 10;
+            // 
+            // Text_ProductDay
+            // 
+            this.Text_ProductDay.Location = new System.Drawing.Point(1023, 401);
+            this.Text_ProductDay.Name = "Text_ProductDay";
+            this.Text_ProductDay.Size = new System.Drawing.Size(130, 47);
+            this.Text_ProductDay.TabIndex = 9;
+            // 
+            // Text_ProductNum
+            // 
+            this.Text_ProductNum.Location = new System.Drawing.Point(972, 276);
+            this.Text_ProductNum.Name = "Text_ProductNum";
+            this.Text_ProductNum.Size = new System.Drawing.Size(144, 47);
+            this.Text_ProductNum.TabIndex = 8;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(817, 401);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(227, 39);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "需求生产周期：";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(817, 276);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(167, 39);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "产品个数：";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(817, 164);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(167, 39);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "产品名称：";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Location = new System.Drawing.Point(986, 35);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(183, 52);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "生产管理";
+            // 
+            // Product_Storage_Data
+            // 
+            this.Product_Storage_Data.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Product_Storage_Data.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Product_Storage_Data.Location = new System.Drawing.Point(399, 112);
+            this.Product_Storage_Data.Name = "Product_Storage_Data";
+            this.Product_Storage_Data.RowHeadersWidth = 102;
+            this.Product_Storage_Data.RowTemplate.Height = 44;
+            this.Product_Storage_Data.Size = new System.Drawing.Size(307, 541);
+            this.Product_Storage_Data.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.label2.Location = new System.Drawing.Point(466, 35);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(183, 52);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "当前库存";
+            // 
+            // Product_Order_Need_Data
+            // 
+            this.Product_Order_Need_Data.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Product_Order_Need_Data.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Product_Order_Need_Data.Location = new System.Drawing.Point(28, 112);
+            this.Product_Order_Need_Data.Name = "Product_Order_Need_Data";
+            this.Product_Order_Need_Data.RowHeadersWidth = 102;
+            this.Product_Order_Need_Data.RowTemplate.Height = 44;
+            this.Product_Order_Need_Data.Size = new System.Drawing.Size(291, 542);
+            this.Product_Order_Need_Data.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.label1.Location = new System.Drawing.Point(81, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(183, 52);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "订单需求";
             // 
             // TabPage_Predict
             // 
             this.TabPage_Predict.Controls.Add(this.Grid_Predict);
             this.TabPage_Predict.Controls.Add(this.Label_Predict);
-            this.TabPage_Predict.Location = new System.Drawing.Point(4, 29);
+            this.TabPage_Predict.Location = new System.Drawing.Point(10, 56);
             this.TabPage_Predict.Name = "TabPage_Predict";
             this.TabPage_Predict.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPage_Predict.Size = new System.Drawing.Size(1210, 582);
+            this.TabPage_Predict.Size = new System.Drawing.Size(1374, 671);
             this.TabPage_Predict.TabIndex = 1;
             this.TabPage_Predict.Text = "生产预测";
             this.TabPage_Predict.UseVisualStyleBackColor = true;
@@ -561,26 +725,26 @@
             this.Grid_Predict.Name = "Grid_Predict";
             this.Grid_Predict.RowHeadersWidth = 102;
             this.Grid_Predict.RowTemplate.Height = 44;
-            this.Grid_Predict.Size = new System.Drawing.Size(1036, 457);
+            this.Grid_Predict.Size = new System.Drawing.Size(1200, 586);
             this.Grid_Predict.TabIndex = 2;
             // 
             // Label_Predict
             // 
             this.Label_Predict.AutoSize = true;
-            this.Label_Predict.Font = new System.Drawing.Font("Microsoft YaHei", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Label_Predict.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Label_Predict.Location = new System.Drawing.Point(742, 34);
             this.Label_Predict.Name = "Label_Predict";
-            this.Label_Predict.Size = new System.Drawing.Size(137, 39);
+            this.Label_Predict.Size = new System.Drawing.Size(273, 78);
             this.Label_Predict.TabIndex = 0;
             this.Label_Predict.Text = "生产预测";
             // 
             // Main_Win
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(18F, 39F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1232, 654);
+            this.ClientSize = new System.Drawing.Size(1420, 809);
             this.Controls.Add(this.Original_Tab);
-            this.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Main_Win";
@@ -606,6 +770,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.Grid_Purchase_Order)).EndInit();
             this.Tab_D.ResumeLayout(false);
             this.Tab_Produce_Control.ResumeLayout(false);
+            this.TabPage_Produce_Control.ResumeLayout(false);
+            this.TabPage_Produce_Control.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Product_Storage_Data)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Product_Order_Need_Data)).EndInit();
             this.TabPage_Predict.ResumeLayout(false);
             this.TabPage_Predict.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid_Predict)).EndInit();
@@ -647,5 +815,19 @@
         private System.Windows.Forms.CheckBox Completed1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button BTN_Produce;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox Text_ProductName;
+        private System.Windows.Forms.TextBox Text_ProductDay;
+        private System.Windows.Forms.TextBox Text_ProductNum;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridView Product_Storage_Data;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView Product_Order_Need_Data;
+        private System.Windows.Forms.Label label1;
     }
 }
