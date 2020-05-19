@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.Group_Add_Purchase = new System.Windows.Forms.GroupBox();
             this.Get_Need_Factory = new System.Windows.Forms.TextBox();
@@ -48,7 +49,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.BTN_Submit = new System.Windows.Forms.Button();
+
+            this.materialinfoDataSet = new SRTP_Win.materialinfoDataSet();
+            this.intermediatematerialBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.intermediate_materialTableAdapter = new SRTP_Win.materialinfoDataSetTableAdapters.intermediate_materialTableAdapter();
             this.Group_Add_Purchase.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.materialinfoDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.intermediatematerialBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -99,12 +106,15 @@
             // 
             // Get_Need_Name
             // 
+            this.Get_Need_Name.DataSource = this.intermediatematerialBindingSource;
+            this.Get_Need_Name.DisplayMember = "im_name";
             this.Get_Need_Name.FormattingEnabled = true;
             this.Get_Need_Name.Location = new System.Drawing.Point(905, 85);
             this.Get_Need_Name.Margin = new System.Windows.Forms.Padding(4);
             this.Get_Need_Name.Name = "Get_Need_Name";
             this.Get_Need_Name.Size = new System.Drawing.Size(364, 28);
             this.Get_Need_Name.TabIndex = 16;
+            this.Get_Need_Name.ValueMember = "im_name";
             // 
             // label11
             // 
@@ -265,6 +275,21 @@
             this.BTN_Submit.UseVisualStyleBackColor = false;
             this.BTN_Submit.Click += new System.EventHandler(this.BTN_Submit_Click);
             // 
+
+            // materialinfoDataSet
+            // 
+            this.materialinfoDataSet.DataSetName = "materialinfoDataSet";
+            this.materialinfoDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // intermediatematerialBindingSource
+            // 
+            this.intermediatematerialBindingSource.DataMember = "intermediate_material";
+            this.intermediatematerialBindingSource.DataSource = this.materialinfoDataSet;
+            // 
+            // intermediate_materialTableAdapter
+            // 
+            this.intermediate_materialTableAdapter.ClearBeforeFill = true;
+            // 
             // Win_Add_Order
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -273,15 +298,22 @@
             this.Controls.Add(this.BTN_Submit);
             this.Controls.Add(this.Group_Add_Purchase);
             this.Controls.Add(this.label1);
+
             this.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Win_Add_Order";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "增加新订单";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Win_Add_Order_FormClosing);
+
             this.Load += new System.EventHandler(this.Win_Add_Order_Load);
+            this.Load += new System.EventHandler(this.Win_Add_Order_Load_1);
+
             this.Group_Add_Purchase.ResumeLayout(false);
             this.Group_Add_Purchase.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.materialinfoDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.intermediatematerialBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -309,5 +341,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button BTN_Submit;
         private System.Windows.Forms.TextBox Get_Need_Factory;
+        private materialinfoDataSet materialinfoDataSet;
+        private System.Windows.Forms.BindingSource intermediatematerialBindingSource;
+        private materialinfoDataSetTableAdapters.intermediate_materialTableAdapter intermediate_materialTableAdapter;
     }
 }

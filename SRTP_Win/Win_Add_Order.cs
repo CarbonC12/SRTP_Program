@@ -83,5 +83,12 @@ namespace SRTP_Win {
                 else MessageBox.Show ("Failed!", "插入订单数据", MessageBoxButtons.OK);
             }
         }
+
+        private void Win_Add_Order_Load_1(object sender, EventArgs e)
+        {
+            // TODO: 这行代码将数据加载到表“materialinfoDataSet.intermediate_material”中。您可以根据需要移动或删除它。
+            this.intermediate_materialTableAdapter.Fill(this.materialinfoDataSet.intermediate_material);
+
+        }
     }
 }
