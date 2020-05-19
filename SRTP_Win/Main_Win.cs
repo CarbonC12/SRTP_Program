@@ -65,7 +65,12 @@ namespace SRTP_Win {
             //GJS
             //SelectTreeNode的值是中文材料类型（比如铜材，化工类）
             string[] columns = new string[10];
-            if (MaterialTree.SelectedNode.Parent.Text == "基本材料") {
+            if(MaterialTree.SelectedNode.Text == "成品")
+            {
+                sql = $"select im_id,im_name from materialinfo.intermediate_material where im_parent is null;";
+                string[] s_cloumns = { "编号", "名称"};
+                columns = s_cloumns;
+            }else if (MaterialTree.SelectedNode.Parent.Text == "基本材料") {
                 sql = $"select material_type_id from materialinfo.material_type where material_type_name = '{SelectTreeNode}'";
                 MySqlCommand cmd = new MySqlCommand (sql, conn);
                 Object reader = cmd.ExecuteScalar ();
@@ -79,11 +84,7 @@ namespace SRTP_Win {
                 sql = $"select * from materialinfo.intermediate_material where im_name = '{SelectTreeNode}' and im_parent is not null;";
                 string[] s_cloumns = { "编号","名称","父节点" };
                 columns = s_cloumns;
-            } else if (MaterialTree.SelectedNode.Parent.Text == "成品") {
-                sql = $"select * from materialinfo.intermediate_material where im_name = '{SelectTreeNode}' and im_parent is null;";
-                string[] s_cloumns = { "编号", "名称", "父节点" };
-                columns = s_cloumns;
-            }
+            } 
             MySqlDataAdapter da = new MySqlDataAdapter (sql, conn);
             DataTable dt = new DataTable ();
             da.Fill (dt);

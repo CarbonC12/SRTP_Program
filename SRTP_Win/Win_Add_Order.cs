@@ -13,25 +13,26 @@ namespace SRTP_Win {
         // public string FactoryLocation, Product, Saler, Factory;
         // public int Num, Price, DayCost;
         private Main_Win MyFatherWin = null;
-
-        // New 填充产品选择框
-        private void Win_Add_Order_Load (object sender, EventArgs e) {
-            MySqlDataAdapter da1 = new MySqlDataAdapter (
-                "select im_name from materialinfo.intermediate_material where im_parent is null;", conn);
-            DataSet ds1 = new DataSet ();
-            da1.Fill (ds1, "materialinfo.intermediate_material");
-            DataTable dt1 = ds1.Tables["materialinfo.intermediate_material"];
-            Get_Need_Name.DataSource = dt1;
-            Get_Need_Name.DisplayMember = "im_name";
-            Get_Need_Name.ValueMember = "im_name";
-        }
-
         public MySqlConnection conn = null;
         public Win_Add_Order (Main_Win FurtherWin, MySqlConnection FurtherCoon) {
             conn = FurtherCoon;
             MyFatherWin = FurtherWin;
             InitializeComponent ();
         }
+
+        // New 填充产品选择框
+        private void Win_Add_Order_Load(object sender, EventArgs e)
+        {
+            MySqlDataAdapter da1 = new MySqlDataAdapter(
+                "select im_name from materialinfo.intermediate_material where im_parent is null;", conn);
+            DataSet ds1 = new DataSet();
+            da1.Fill(ds1, "materialinfo.intermediate_material");
+            DataTable dt1 = ds1.Tables["materialinfo.intermediate_material"];
+            Get_Need_Name.DataSource = dt1;
+            Get_Need_Name.DisplayMember = "im_name";
+            Get_Need_Name.ValueMember = "im_name";
+        }
+
 
         private void Win_Add_Order_FormClosing (object sender, FormClosingEventArgs e) {
             MyFatherWin.Show ();
