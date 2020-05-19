@@ -96,7 +96,7 @@
             this.Button_Add_Order = new System.Windows.Forms.Button();
             this.Completed = new System.Windows.Forms.CheckBox();
             this.BtnSearchFactory = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TxtSearchText = new System.Windows.Forms.TextBox();
             this.Lable_Order_Manage = new System.Windows.Forms.Label();
             this.OrderDataView = new System.Windows.Forms.DataGridView();
             this.OrderTree = new System.Windows.Forms.TreeView();
@@ -105,8 +105,6 @@
             this.NotCompleted1 = new System.Windows.Forms.CheckBox();
             this.Button_Add_Purchase_Order = new System.Windows.Forms.Button();
             this.Completed1 = new System.Windows.Forms.CheckBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.Grid_Purchase_Order = new System.Windows.Forms.DataGridView();
             this.Tree_Purchase_Order = new System.Windows.Forms.TreeView();
             this.LabelPurchaseOrder = new System.Windows.Forms.Label();
@@ -270,7 +268,7 @@
             this.panel1.Controls.Add(this.Button_Add_Order);
             this.panel1.Controls.Add(this.Completed);
             this.panel1.Controls.Add(this.BtnSearchFactory);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.TxtSearchText);
             this.panel1.Location = new System.Drawing.Point(216, 84);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(940, 44);
@@ -324,14 +322,15 @@
             this.BtnSearchFactory.TabIndex = 1;
             this.BtnSearchFactory.Text = "搜索厂家";
             this.BtnSearchFactory.UseVisualStyleBackColor = true;
+            this.BtnSearchFactory.Click += new System.EventHandler(this.BtnSearchFactory_Click);
             // 
-            // textBox1
+            // TxtSearchText
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox1.Location = new System.Drawing.Point(0, 7);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(199, 34);
-            this.textBox1.TabIndex = 0;
+            this.TxtSearchText.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.TxtSearchText.Location = new System.Drawing.Point(0, 7);
+            this.TxtSearchText.Name = "TxtSearchText";
+            this.TxtSearchText.Size = new System.Drawing.Size(199, 34);
+            this.TxtSearchText.TabIndex = 0;
             // 
             // Lable_Order_Manage
             // 
@@ -393,8 +392,6 @@
             this.panel2.Controls.Add(this.NotCompleted1);
             this.panel2.Controls.Add(this.Button_Add_Purchase_Order);
             this.panel2.Controls.Add(this.Completed1);
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.textBox2);
             this.panel2.Location = new System.Drawing.Point(203, 139);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1006, 44);
@@ -406,7 +403,7 @@
             this.NotCompleted1.Checked = true;
             this.NotCompleted1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.NotCompleted1.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.NotCompleted1.Location = new System.Drawing.Point(437, 9);
+            this.NotCompleted1.Location = new System.Drawing.Point(267, 10);
             this.NotCompleted1.Name = "NotCompleted1";
             this.NotCompleted1.Size = new System.Drawing.Size(94, 31);
             this.NotCompleted1.TabIndex = 3;
@@ -431,31 +428,13 @@
             this.Completed1.Checked = true;
             this.Completed1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.Completed1.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Completed1.Location = new System.Drawing.Point(347, 9);
+            this.Completed1.Location = new System.Drawing.Point(167, 9);
             this.Completed1.Name = "Completed1";
             this.Completed1.Size = new System.Drawing.Size(94, 31);
             this.Completed1.TabIndex = 2;
             this.Completed1.Text = "已完成";
             this.Completed1.UseVisualStyleBackColor = true;
             this.Completed1.CheckedChanged += new System.EventHandler(this.Completed1_CheckedChanged);
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button2.Location = new System.Drawing.Point(205, 5);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(115, 36);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "搜索厂家";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox2.Location = new System.Drawing.Point(0, 7);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(199, 34);
-            this.textBox2.TabIndex = 0;
             // 
             // Grid_Purchase_Order
             // 
@@ -561,7 +540,7 @@
             this.Grid_Predict.Name = "Grid_Predict";
             this.Grid_Predict.RowHeadersWidth = 102;
             this.Grid_Predict.RowTemplate.Height = 44;
-            this.Grid_Predict.Size = new System.Drawing.Size(1036, 457);
+            this.Grid_Predict.Size = new System.Drawing.Size(1036, 461);
             this.Grid_Predict.TabIndex = 2;
             // 
             // Label_Predict
@@ -641,11 +620,9 @@
         private System.Windows.Forms.CheckBox NotCompleted;
         private System.Windows.Forms.CheckBox Completed;
         private System.Windows.Forms.Button BtnSearchFactory;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TxtSearchText;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.CheckBox NotCompleted1;
         private System.Windows.Forms.CheckBox Completed1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox2;
     }
 }

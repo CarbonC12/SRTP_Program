@@ -65,32 +65,30 @@ namespace SRTP_Win {
             //GJS
             //SelectTreeNode的值是中文材料类型（比如铜材，化工类）
             string[] columns = new string[10];
-            if(MaterialTree.SelectedNode.Text == "成品")
-            {
+            if (MaterialTree.SelectedNode.Text == "成品") {
                 sql = $"select im_id,im_name from materialinfo.intermediate_material where im_parent is null;";
-                string[] s_cloumns = { "编号", "名称"};
+                string[] s_cloumns = { "编号", "名称" };
                 columns = s_cloumns;
-            }else if (MaterialTree.SelectedNode.Parent.Text == "基本材料") {
+            } else if (MaterialTree.SelectedNode.Parent.Text == "基本材料") {
                 sql = $"select material_type_id from materialinfo.material_type where material_type_name = '{SelectTreeNode}'";
                 MySqlCommand cmd = new MySqlCommand (sql, conn);
                 Object reader = cmd.ExecuteScalar ();
                 if (reader != null) {
                     sql = $"select * from materialinfo.fundamental_material where fm_type = '{reader.ToString()}'";
-                    string[] s_columns = { "编号","材料类型","材料名称","库存量","单位"};
+                    string[] s_columns = { "编号", "材料类型", "材料名称", "库存量", "单位" };
                     columns = s_columns;
                 }
             } else if (MaterialTree.SelectedNode.Parent.Text == "半成品" ||
                 MaterialTree.SelectedNode.Parent.Text == "电流线圈") {
                 sql = $"select * from materialinfo.intermediate_material where im_name = '{SelectTreeNode}' and im_parent is not null;";
-                string[] s_cloumns = { "编号","名称","父节点" };
+                string[] s_cloumns = { "编号", "名称", "父节点" };
                 columns = s_cloumns;
-            } 
+            }
             MySqlDataAdapter da = new MySqlDataAdapter (sql, conn);
             DataTable dt = new DataTable ();
             da.Fill (dt);
             dataGridView1.DataSource = dt;
-            for (int i = 0; i < columns.Length; i++)
-            {
+            for (int i = 0; i < columns.Length; i++) {
                 dataGridView1.Columns[i].HeaderCell.Value = columns[i];
             }
         }
@@ -137,9 +135,22 @@ namespace SRTP_Win {
             DataTable dt = new DataTable ();
             da.Fill (dt);
             OrderDataView.DataSource = dt;
-            string[] columns = {"编号","产品名称","数量","单价","盈利","销售员","厂家","配送地址","下单日期","截止日期","完成情况"};
-            for(int i = 0; i < columns.Length; i++)
-            {
+            string[] columns = { "编号", "产品名称", "数量", "单价", "盈利", "销售员", "厂家", "配送地址", "下单日期", "截止日期", "完成情况" };
+            for (int i = 0; i < columns.Length; i++) {
+                OrderDataView.Columns[i].HeaderCell.Value = columns[i];
+            }
+        }
+
+        private void BtnSearchFactory_Click (object sender, EventArgs e) {
+            string str = TxtSearchText.Text;
+            if (str.Length <= 0) return;
+            sql = $"select * from materialinfo.order_table where factory like '%{str}%';";
+            MySqlDataAdapter da = new MySqlDataAdapter (sql, conn);
+            DataTable dt = new DataTable ();
+            da.Fill (dt);
+            OrderDataView.DataSource = dt;
+            string[] columns = { "编号", "产品名称", "数量", "单价", "盈利", "销售员", "厂家", "配送地址", "下单日期", "截止日期", "完成情况" };
+            for (int i = 0; i < columns.Length; i++) {
                 OrderDataView.Columns[i].HeaderCell.Value = columns[i];
             }
         }
@@ -195,9 +206,8 @@ namespace SRTP_Win {
                 DataTable dt = new DataTable ();
                 da.Fill (dt);
                 Grid_Purchase_Order.DataSource = dt;
-                string[] columns = {"编号","类型","名称","数量","单价","总价","订单日期","截止日期","厂家","负责人","完成情况"};
-                for(int i = 0; i < columns.Length; i++)
-                {
+                string[] columns = { "编号", "类型", "名称", "数量", "单价", "总价", "订单日期", "截止日期", "厂家", "负责人", "完成情况" };
+                for (int i = 0; i < columns.Length; i++) {
                     Grid_Purchase_Order.Columns[i].HeaderCell.Value = columns[i];
                 }
 
