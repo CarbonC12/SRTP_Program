@@ -274,3 +274,23 @@
 
 -- update purchase_table set is_completed = 'N';
 
+-- create view order_view(order_id, product_name, amount, dead_line)
+-- as select order_id,im_name,amount,dead_line from intermediate_material, order_table
+-- where intermediate_material.im_id = order_table.product_name;
+
+-- select * from order_view;
+
+-- alter table intermediate_material 
+-- add column im_intentory int not null default 0;
+
+-- create view product_view 
+-- as select im_id, im_name, im_intentory from intermediate_material where im_parent is null;
+
+-- select * from product_view;
+
+create view total_order_view as
+select amount+ from order_view where dead_line 
+
+create view advice 
+as select im_intentory.im_id, im_intentory.im_name, im_intentory.im_intentory-
+where im_intentory

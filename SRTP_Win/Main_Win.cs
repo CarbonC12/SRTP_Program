@@ -218,12 +218,52 @@ namespace SRTP_Win {
         {
 
         }
+
+
         //对采购单界面操作结束————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
         //生产管理页面——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+        private void BtnOrder_Click(object sender, EventArgs e)
+        {
+            DateTime Now = DateTime.Now;
+            string now = Now.ToString("yyyy-MM-dd");
+            string now_7 = Now.AddDays(7).ToString("yyyy-MM-dd");
+            sql = $"select product_name, amount, dead_line from materialinfo.order_view" +
+                $" where dead_line between '{now}' and '{now_7}';";
+            Test.Text = now + now_7;
+            MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            Product_Order_Need_Data.DataSource = dt;
+            string[] columns = { "产品名称", "数量", "截止日期" };
+            for(int i=0; i<columns.Length; i++)
+            {
+                Product_Order_Need_Data.Columns[i].HeaderCell.Value = columns[i];
+            }
+        }
 
-       
+        private void BtnInventory_Click(object sender, EventArgs e)
+        {
+            sql = "select im_name, im_intentory from product_view;";
+            MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            Product_Storage_Data.DataSource = dt;
+            string[] columns = { "产品名称", "库存量"};
+            for (int i = 0; i < columns.Length; i++)
+            {
+                Product_Storage_Data.Columns[i].HeaderCell.Value = columns[i];
+            }
+        }
+
+        private void BtnAdvice_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
         //生产管理页面结束——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
     }
     class AutoResizeForm {
