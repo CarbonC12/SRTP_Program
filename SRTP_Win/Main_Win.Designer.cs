@@ -455,21 +455,21 @@
 
             // button2
             // 
-            this.button2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button2.Location = new System.Drawing.Point(205, 5);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(115, 36);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "搜索厂家";
-            this.button2.UseVisualStyleBackColor = true;
+            //this.button2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            //this.button2.Location = new System.Drawing.Point(205, 5);
+            //this.button2.Name = "button2";
+            //this.button2.Size = new System.Drawing.Size(115, 36);
+            //this.button2.TabIndex = 1;
+            //this.button2.Text = "搜索厂家";
+            //this.button2.UseVisualStyleBackColor = true;
             // 
             // textBox2
             // 
-            this.textBox2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox2.Location = new System.Drawing.Point(0, 7);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(199, 60);
-            this.textBox2.TabIndex = 0;
+            //this.textBox2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            //this.textBox2.Location = new System.Drawing.Point(0, 7);
+            //this.textBox2.Name = "textBox2";
+            //this.textBox2.Size = new System.Drawing.Size(199, 60);
+            //this.textBox2.TabIndex = 0;
             // 
             // Grid_Purchase_Order
             // 
