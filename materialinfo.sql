@@ -274,3 +274,34 @@
 
 -- update purchase_table set is_completed = 'N';
 
+-- create view order_view(order_id, product_name, amount, dead_line)
+-- as select order_id,im_name,amount,dead_line from intermediate_material, order_table
+-- where intermediate_material.im_id = order_table.product_name;
+
+-- alter view order_view as
+-- select order_id,im_name,amount,dead_line from intermediate_material, order_table
+-- where intermediate_material.im_id = order_table.product_name 
+-- and order_table.dead_line >= curdate()
+-- and order_table.dead_line < date_add(curdate(),interval 7 day);
+
+
+
+-- select * from order_view;
+
+-- alter table intermediate_material 
+-- add column im_intentory int not null default 0;
+
+-- create view product_view 
+-- as select im_id, im_name, im_intentory  from intermediate_material where im_parent is null;
+
+-- select * from product_view;
+use `materialinfo`;
+-- drop view order_amount_view;
+-- create view order_amount_view as
+-- select im_name,dead_line,sum(amount) as total from order_view
+-- group by im_name,dead_line;
+
+
+
+
+
