@@ -155,6 +155,25 @@ namespace SRTP_Win {
             }
         }
 
+        private void OrderDataView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int row = e.RowIndex;
+            int column = e.ColumnIndex;
+            DataGridView dgv = (DataGridView)sender;
+            // 是否完成标志列
+            if (column == 10)
+            {
+                dgv.Rows[row].Cells[10].Value = "Y";
+                string id = dgv.Rows[row].Cells[0].Value.ToString();
+                sql = $"update materialinfo.purchase_table set is_completed = 'Y' where order_id = {id};";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    MessageBox.Show("已完成");
+                }
+            }
+        }
+
         private void Button_Add_Order_Click (object sender, EventArgs e) {
             this.Hide ();
             Win_Add_Order win_Add_Order = new Win_Add_Order (this, conn);
@@ -214,10 +233,26 @@ namespace SRTP_Win {
             }
         }
 
-        private void Grid_Purchase_Order_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void Grid_Purchase_Order_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            int row = e.RowIndex;
+            int column = e.ColumnIndex;
+            DataGridView dgv = (DataGridView)sender;
+            // 是否完成标志列
+            if (column == 10)
+            {
+                dgv.Rows[row].Cells[10].Value = "Y";
+                string id = dgv.Rows[row].Cells[0].Value.ToString();
+                sql = $"update materialinfo.purchase_table set is_completed = 'Y' where order_id = {id};";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    MessageBox.Show("已完成");
+                }
+            }
         }
+
+      
 
 
         //对采购单界面操作结束————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -229,9 +264,7 @@ namespace SRTP_Win {
             DateTime Now = DateTime.Now;
             string now = Now.ToString("yyyy-MM-dd");
             string now_7 = Now.AddDays(7).ToString("yyyy-MM-dd");
-            sql = $"select product_name, amount, dead_line from materialinfo.order_view" +
-                $" where dead_line between '{now}' and '{now_7}';";
-            Test.Text = now + now_7;
+            sql = $"select im_name, amount, dead_line from materialinfo.order_view;";
             MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -259,11 +292,21 @@ namespace SRTP_Win {
 
         private void BtnAdvice_Click(object sender, EventArgs e)
         {
+            DataTable dt = new DataTable();
+            string[] column_name = { "产品名称", "截止日期", "生产建议" };
+            for(int i=0; i < column_name.Length; i++){
+                DataColumn dc = new DataColumn(column_name[i], typeof(String));
+                dt.Columns.Add(dc);
+            }
 
+            dt.Rows.Add("ZW32", "2020/5/28", "10");
+            dt.Rows.Add("ZW32", "2020/5/29", "10");
+
+            dataGridView2.DataSource = dt;
+            
         }
 
-
-
+        
         //生产管理页面结束——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
     }
     class AutoResizeForm {

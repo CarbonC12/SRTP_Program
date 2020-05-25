@@ -111,6 +111,7 @@
             this.Tab_D = new System.Windows.Forms.TabPage();
             this.Tab_Produce_Control = new System.Windows.Forms.TabControl();
             this.TabPage_Produce_Control = new System.Windows.Forms.TabPage();
+            this.Test = new System.Windows.Forms.Label();
             this.BtnAdvice = new System.Windows.Forms.Button();
             this.BtnInventory = new System.Windows.Forms.Button();
             this.BtnOrder = new System.Windows.Forms.Button();
@@ -123,7 +124,6 @@
             this.TabPage_Predict = new System.Windows.Forms.TabPage();
             this.Grid_Predict = new System.Windows.Forms.DataGridView();
             this.Label_Predict = new System.Windows.Forms.Label();
-            this.Test = new System.Windows.Forms.Label();
             this.Original_Tab.SuspendLayout();
             this.Tab_A.SuspendLayout();
             this.Tab_A_Store.SuspendLayout();
@@ -368,6 +368,7 @@
             this.OrderDataView.RowTemplate.Height = 44;
             this.OrderDataView.Size = new System.Drawing.Size(1102, 510);
             this.OrderDataView.TabIndex = 1;
+            this.OrderDataView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OrderDataView_CellDoubleClick);
             // 
             // OrderTree
             // 
@@ -456,11 +457,12 @@
             this.Grid_Purchase_Order.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Grid_Purchase_Order.Location = new System.Drawing.Point(203, 210);
             this.Grid_Purchase_Order.Name = "Grid_Purchase_Order";
+            this.Grid_Purchase_Order.ReadOnly = true;
             this.Grid_Purchase_Order.RowHeadersWidth = 102;
             this.Grid_Purchase_Order.RowTemplate.Height = 44;
             this.Grid_Purchase_Order.Size = new System.Drawing.Size(1003, 399);
             this.Grid_Purchase_Order.TabIndex = 4;
-            this.Grid_Purchase_Order.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_Purchase_Order_CellValueChanged);
+            this.Grid_Purchase_Order.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_Purchase_Order_CellDoubleClick);
             // 
             // Tree_Purchase_Order
             // 
@@ -539,6 +541,15 @@
             this.TabPage_Produce_Control.TabIndex = 0;
             this.TabPage_Produce_Control.Text = "产品生产管理";
             this.TabPage_Produce_Control.UseVisualStyleBackColor = true;
+            // 
+            // Test
+            // 
+            this.Test.AutoSize = true;
+            this.Test.Location = new System.Drawing.Point(322, 46);
+            this.Test.Name = "Test";
+            this.Test.Size = new System.Drawing.Size(53, 20);
+            this.Test.TabIndex = 9;
+            this.Test.Text = "label4";
             // 
             // BtnAdvice
             // 
@@ -658,7 +669,7 @@
             this.Grid_Predict.Name = "Grid_Predict";
             this.Grid_Predict.RowHeadersWidth = 102;
             this.Grid_Predict.RowTemplate.Height = 44;
-            this.Grid_Predict.Size = new System.Drawing.Size(1060, 539);
+            this.Grid_Predict.Size = new System.Drawing.Size(1060, 559);
             this.Grid_Predict.TabIndex = 2;
             // 
             // Label_Predict
@@ -670,15 +681,6 @@
             this.Label_Predict.Size = new System.Drawing.Size(137, 39);
             this.Label_Predict.TabIndex = 0;
             this.Label_Predict.Text = "生产预测";
-            // 
-            // Test
-            // 
-            this.Test.AutoSize = true;
-            this.Test.Location = new System.Drawing.Point(322, 46);
-            this.Test.Name = "Test";
-            this.Test.Size = new System.Drawing.Size(53, 20);
-            this.Test.TabIndex = 9;
-            this.Test.Text = "label4";
             // 
             // Main_Win
             // 
